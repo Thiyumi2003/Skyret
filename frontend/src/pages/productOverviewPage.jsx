@@ -19,7 +19,7 @@ export default function ProductOverviewPage(){
     const isLoggedIn = !!localStorage.getItem("token")
 
     const fetchReviews = () => {
-        api.get("/reviews/product/" + parameters.productId).then((res) => {
+        api.get("/reviews/product/" + parameters.productId, { skipAuth: true }).then((res) => {
             setReviews(res.data)
         }).catch((err) => console.log(err))
     }

@@ -8,7 +8,7 @@ export default function ReviewsPage() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        api.get("/reviews")
+        api.get("/reviews", { skipAuth: true })
             .then((res) => {
                 setReviews(res.data);
                 setLoading(false);

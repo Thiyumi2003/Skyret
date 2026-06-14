@@ -10,17 +10,11 @@ export default function authenticateUser(req, res, next){
 
             jwt.verify(token, process.env.JWT_SECRET , 
                 (error, decoded)=>{   
-                                  
-                    if(decoded == null){
-                        res.status(401).json(
-                            {
-                                message : "Invalid Token Please Login Again"
-                            }
-                        )
-                    }else{
+                    if(error == null && decoded != null){
                         req.user = decoded
-                        next()
                     }
+
+                    next()
                 }
             )
 
