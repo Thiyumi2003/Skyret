@@ -1,4 +1,5 @@
-const apiUrl = import.meta.env.VITE_API_URL || "/api";
+const productionApiUrl = "https://skyret-backend.onrender.com/api";
+const apiUrl = import.meta.env.VITE_API_URL || productionApiUrl;
 
 function getApiOrigin() {
 	if (apiUrl.startsWith("http://") || apiUrl.startsWith("https://")) {

@@ -1,9 +1,10 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_API_URL || "/api";
+const productionBaseURL = "https://skyret-backend.onrender.com/api";
+const baseURL = import.meta.env.VITE_API_URL || productionBaseURL;
 
 if (!import.meta.env.VITE_API_URL) {
-    console.warn("VITE_API_URL is not set. Falling back to /api.");
+    console.warn("VITE_API_URL is not set. Falling back to the production backend URL.");
 }
 
 const api = axios.create({
