@@ -23,13 +23,13 @@ export default function AdminPage(){
                     <h1 className="text-2xl font-bold border-b border-white/20 pb-4">Admin Panel</h1>
                 </div>
                     
-                <Link to="/admin/" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
-                    <FaShoppingBag />
-                    <span>Orders</span>
-                </Link>
                 <Link to="/" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
                     <FaHome />
                     <span>Home</span>
+                </Link>
+                <Link to="/admin/" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
+                    <FaShoppingBag />
+                    <span>Orders</span>
                 </Link>
                 <Link to="/admin/products" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
                     <FaBoxOpen />
