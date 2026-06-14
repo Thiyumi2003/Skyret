@@ -9,6 +9,7 @@ import orderRouter from "./routers/orderRouter.js";
 import reviewRouter from "./routers/reviewRouter.js";
 import mediaRouter from "./routers/mediaRouter.js";
 import inquiryRouter from "./routers/inquiryRouter.js";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -21,13 +22,14 @@ const app = express();
 
 
 const mongodbURI = process.env.MONGO_URI
+const corsOrigin = process.env.CORS_ORIGIN
 
 mongoose.connect(mongodbURI).then(
     ()=>{
         console.log("Connected to MongoDB");
     }
 )
-app.use(cors())
+app.use(cors(corsOrigin ? { origin: corsOrigin } : undefined))
 
 app.use(express.json())
 
@@ -41,6 +43,17 @@ app.use("/api/orders",orderRouter)
 app.use("/api/reviews",reviewRouter)
 app.use("/api/media",mediaRouter)
 app.use("/api/inquiries", inquiryRouter)
+
+const frontendDistPath = path.join(__dirname, "../frontend/dist");
+const frontendIndexPath = path.join(frontendDistPath, "index.html");
+
+if (fs.existsSync(frontendIndexPath)) {
+    app.use(express.static(frontendDistPath));
+
+    app.get(/^\/(?!api|uploads).*/, (req, res) => {
+        res.sendFile(frontendIndexPath);
+    });
+}
 
 const PORT = process.env.PORT || 3000;
 
