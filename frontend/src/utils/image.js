@@ -8,6 +8,15 @@ function getApiOrigin() {
 	return "";
 }
 
+function isLocalBackendUrl(imagePath) {
+	try {
+		const url = new URL(imagePath);
+		return url.hostname === "localhost" || url.hostname === "127.0.0.1";
+	} catch {
+		return false;
+	}
+}
+
 export function resolveImageUrl(imagePath) {
 	if (!imagePath) {
 		return "";
@@ -19,6 +28,18 @@ export function resolveImageUrl(imagePath) {
 		imagePath.startsWith("data:") ||
 		imagePath.startsWith("blob:")
 	) {
+		if (isLocalBackendUrl(imagePath)) {
+			const apiOrigin = getApiOrigin();
+			if (apiOrigin) {
+				try {
+					const url = new URL(imagePath);
+					return `${apiOrigin}${url.pathname}${url.search}${url.hash}`;
+				} catch {
+					return imagePath;
+				}
+			}
+		}
+
 		return imagePath;
 	}
 
