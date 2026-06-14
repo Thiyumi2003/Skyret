@@ -35,6 +35,14 @@ app.use(express.json())
 
 app.use("/uploads", express.static(path.join(__dirname, "uploads")))
 
+app.get("/", (req, res) => {
+    res.json({ message: "Skyret backend is running" });
+});
+
+app.get("/health", (req, res) => {
+    res.json({ status: "ok" });
+});
+
 app.use(authenticateUser)
 
 app.use("/api/users",userRouter)
