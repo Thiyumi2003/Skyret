@@ -41,7 +41,7 @@ export default function AdminReviewsPage() {
 
     return (
         <div className="w-full h-full p-5 overflow-y-scroll">
-            <h1 className="text-3xl font-bold text-white mb-6">Manage Customer Reviews</h1>
+            <h1 className="text-3xl font-bold text-zinc-950 ite mb-6">Manage Customer Reviews</h1>
             
             <div className="grid grid-cols-1 gap-4">
                 {reviews.length === 0 ? (
