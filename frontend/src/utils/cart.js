@@ -1,4 +1,6 @@
 
+import { resolveImageUrl } from "./image"
+
 const exampleCart = [
 
     {
@@ -60,7 +62,7 @@ export function addToCart(product , quantity){
                     product : {
                         productId : product.productId,
                         name : product.name,
-                        image : product.images[0],
+                        image : resolveImageUrl(product.images?.[0]),
                         labelledPrice : product.labelledPrice,
                         price : product.price,
                     },

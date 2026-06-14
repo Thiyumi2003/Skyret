@@ -6,6 +6,7 @@ import getFormattedPrice from "../utils/price-format";
 import { FaPhoneAlt } from "react-icons/fa";
 import { MdHome } from "react-icons/md";
 import api from "../utils/api";
+import { resolveImageUrl } from "../utils/image";
 
 export default function OrderDetailsModal(props){
 
@@ -98,7 +99,7 @@ export default function OrderDetailsModal(props){
                                         return(
                                             <div key={index} className="w-full flex justify-between items-center bg-gray-100 rounded-lg p-2 mb-2">
                                                 <div className="flex items-center gap-4">
-                                                    <img className="w-[80px] h-[80px] object-cover rounded-lg" src={item.product.image}/>
+                                                    <img className="w-[80px] h-[80px] object-cover rounded-lg" src={resolveImageUrl(item.product.image)}/>
                                                     <div className="flex flex-col gap-1">
                                                         <span className="font-semibold text-gray-800">{item.product.name}</span>
                                                         <span className="text-sm text-gray-500">Quantity: {item.quantity}</span>

@@ -5,6 +5,7 @@ import { BiEdit } from "react-icons/bi";
 import LoadingAnimation from "../../components/loadingAnimation";
 import ProductDeleteModal from "../../components/productDeleteModal";
 import api from "../../utils/api";
+import { resolveImageUrl } from "../../utils/image";
 
 
 export default function AdminProductsPage() {
@@ -68,7 +69,7 @@ export default function AdminProductsPage() {
                                             >
                                                 <td className="px-5 py-4">
                                                     <img
-                                                        src={item.images[0]}
+                                                        src={resolveImageUrl(item.images?.[0])}
                                                         alt={item.name}
                                                         className="w-16 h-16 object-cover rounded-xl border border-gray-200 bg-white"
                                                     />

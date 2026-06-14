@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { resolveImageUrl } from "../utils/image"
 
 export default function ImageSlideShow(props){
     const [activeImage , setActiveImage] = useState(0)
@@ -6,7 +7,7 @@ export default function ImageSlideShow(props){
 
     return(
         <div className="w-[500px] lg:h-[600px]  flex flex-col">
-            <img className="w-full aspect-square object-cover" src={images[activeImage]}/>
+            <img className="w-full aspect-square object-cover" src={resolveImageUrl(images[activeImage])}/>
             <div className="h-[100px] w-full gap-2 flex items-center justify-center">
                 {
                     images.map(
@@ -18,7 +19,7 @@ export default function ImageSlideShow(props){
                                         setActiveImage(index)
                                     }
                                 }
-                                src={item} key={index}/>
+                                src={resolveImageUrl(item)} key={index}/>
                             )
                         }
                     )

@@ -4,6 +4,7 @@ import getFormattedPrice from "../utils/price-format"
 import { useLocation, Navigate, Link } from "react-router-dom"
 import CreateOrderModal from "../components/createOderModal"
 import { FaArrowLeft, FaReceipt, FaBox, FaCreditCard } from "react-icons/fa"
+import { resolveImageUrl } from "../utils/image"
 
 export default function CheckoutPage(){
     const location = useLocation()
@@ -46,7 +47,7 @@ export default function CheckoutPage(){
                                     (item , index)=>{
                                         return(
                                             <div key={item.product.productId} className="flex items-center gap-4 p-2 rounded-xl hover:bg-gray-50 transition-colors border-b border-gray-50 last:border-0 pb-4 last:pb-0">
-                                                <img className="w-20 h-20 object-cover rounded-lg shadow-sm" src={item.product.image}/>
+                                                <img className="w-20 h-20 object-cover rounded-lg shadow-sm" src={resolveImageUrl(item.product.image)}/>
                                                 <div className="flex-1 min-w-0">
                                                     <h1 className="text-lg font-bold text-gray-800 truncate">{item.product.name}</h1>
                                                     <p className="text-sm text-gray-400 font-medium">Qty: {item.quantity}</p>
