@@ -1,5 +1,4 @@
 import { useGoogleLogin } from "@react-oauth/google";
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
@@ -40,7 +39,7 @@ export default function LoginPage() {
         console.log("Password: ", password);
         //backend localhost:3000/users/login
 
-        axios.post(import.meta.env.VITE_API_URL+"/users/login",{
+        api.post("/users/login",{
             email : email,
             password : password
         }).then((response)=>{
@@ -62,7 +61,7 @@ export default function LoginPage() {
 
         }).catch((error)=>{
             //alert(error.response.data.message);
-            toast.error(error.response.data.message)
+            toast.error(error.response?.data?.message || "Login failed")
         });
     }
 
