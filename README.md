@@ -167,6 +167,8 @@ Environment variables on Vercel:
 VITE_API_URL=https://your-backend.onrender.com/api
 ```
 
+If this variable is missing or wrong, hosted login will fail because the frontend will send requests to the wrong backend URL.
+
 The frontend already falls back to `/api` locally, so local development still works.
 
 Production environment variables:

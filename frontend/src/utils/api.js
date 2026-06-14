@@ -2,6 +2,10 @@ import axios from 'axios';
 
 const baseURL = import.meta.env.VITE_API_URL || "/api";
 
+if (!import.meta.env.VITE_API_URL) {
+    console.warn("VITE_API_URL is not set. Falling back to /api.");
+}
+
 const api = axios.create({
     baseURL,
 })
