@@ -6,7 +6,7 @@ import AdminOrdersPage from "./admin/adminOrdersPage";
 import AdminReviewsPage from "./admin/adminReviewsPage";
 import AdminUsersPage from "./admin/adminUsersPage";
 import AdminInquiriesPage from "./admin/adminInquiriesPage";
-import { FaBoxOpen, FaShoppingBag, FaStar, FaUsers, FaSignOutAlt, FaCommentAlt } from "react-icons/fa";
+import { FaBoxOpen, FaShoppingBag, FaStar, FaUsers, FaSignOutAlt, FaCommentAlt, FaHome } from "react-icons/fa";
 
 export default function AdminPage(){
     const navigate = useNavigate();
@@ -26,6 +26,10 @@ export default function AdminPage(){
                 <Link to="/admin/" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
                     <FaShoppingBag />
                     <span>Orders</span>
+                </Link>
+                <Link to="/" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
+                    <FaHome />
+                    <span>Home</span>
                 </Link>
                 <Link to="/admin/products" className="flex items-center gap-3 py-3 px-6 hover:bg-white/10 transition-colors">
                     <FaBoxOpen />
