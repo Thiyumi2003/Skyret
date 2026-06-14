@@ -22,7 +22,7 @@ const app = express();
 
 
 const mongodbURI = process.env.MONGO_URI
-const corsOrigin = process.env.CORS_ORIGIN
+const corsOrigin = process.env.CORS_ORIGIN?.trim().replace(/\/$/, "")
 
 mongoose.connect(mongodbURI).then(
     ()=>{
