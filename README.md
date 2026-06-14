@@ -125,6 +125,26 @@ CORS_ORIGIN=https://your-frontend.vercel.app
 
 Render provides `PORT` automatically.
 
+### Seed the admin user
+
+The hosted Atlas database must contain an admin user before you can log in as admin.
+
+Run this once against the same Atlas `MONGO_URI`:
+
+```bash
+cd backend
+npm run seed:admin
+```
+
+Default admin credentials created by the seed script:
+
+```text
+Email: admin@gmail.com
+Password: admin123
+```
+
+If the admin user already exists, the script will skip creating it.
+
 ### Vercel frontend
 
 Use the `frontend/` folder as the Vercel root directory.
